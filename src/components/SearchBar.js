@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../context";
 
 export default function SearchBar() {
-  const handleQuery = (e) => {
-    console.log(e.target.value);
-  };
+  const context = useContext(DataContext);
+  const { getGallery } = context;
 
   return (
     <div className="searchbar-holder">
@@ -12,7 +12,7 @@ export default function SearchBar() {
         type="text"
         name="picture"
         placeholder="Start searching for images!"
-        onChange={handleQuery}
+        onChange={getGallery}
       />
     </div>
   );

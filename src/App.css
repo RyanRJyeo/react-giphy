@@ -73,3 +73,47 @@ body {
   color: var(--lightgrey);
   font-family: var(--mainfont);
 }
+
+/* Gallery */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+
+.eachimage {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  margin: 1%;
+  width: 23%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .eachimage {
+    height: 300px;
+    margin: 2%;
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .eachimage {
+    height: 300px;
+    margin: 2% auto;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .eachimage {
+    height: 300px;
+    margin: 2% auto;
+    width: 95%;
+  }
+}
