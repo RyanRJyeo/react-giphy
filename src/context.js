@@ -10,14 +10,18 @@ class DataProvider extends Component {
     favorites: [],
   };
 
-  getGallery = async (e) => {
+  startLoading = () => {
     this.setState({ loading: true });
-    const query = e.target.value.replace(/ /g, "+");
+  };
+
+  getGallery = async (e) => {
+    const query = e.replace(/ /g, "+");
     axios
       .get(
         `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8`
       )
       .then((res) => {
+        console.log(res);
         const gallery = this.formatData(res.data.data);
         this.setState({ gallery });
       });
@@ -42,6 +46,7 @@ class DataProvider extends Component {
       <DataContext.Provider
         value={{
           ...this.state,
+          startLoading: this.startLoading,
           getGallery: this.getGallery,
           doneLoading: this.doneLoading,
         }}

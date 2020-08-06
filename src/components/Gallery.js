@@ -5,7 +5,6 @@ export default function Gallery() {
   const context = useContext(DataContext);
   const { gallery, doneLoading, loading } = context;
 
-  console.log(context);
   let img;
   if (gallery.length > 0) {
     img = gallery.map((image, index) => {
