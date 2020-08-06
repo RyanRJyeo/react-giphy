@@ -30,21 +30,34 @@ class DataProvider extends Component {
     let gallery = [];
     for (let i = 0; i < dataArray.length; i++) {
       const { url } = dataArray[i].images.original;
-      const favorite = false;
+      let favorite = false;
+      if (this.state.favorites.length > 0 && this.state.favorites.find((favUrl) => favUrl === url)) {
+        favorite = true;
+      }
       gallery.push({ url, favorite });
     }
 
     return gallery;
   };
 
-  toggleFav = (galleryIndex) => {
-    const gallery = this.state.gallery.map((eachImage, eachIndex) => {
-      if (eachIndex === galleryIndex) {
+  toggleFav = (imgUrl, fromFavGallery) => {
+    let favorites = this.state.favorites;
+    const gallery = this.state.gallery.map((eachImage) => {
+      if (eachImage.url === imgUrl) {
         eachImage.favorite = !eachImage.favorite;
+
+        if (eachImage.favorite) {
+          favorites.push(eachImage.url);
+        } else {
+          favorites = favorites.filter((url) => url !== eachImage.url);
+        }
       }
       return eachImage;
     });
-    this.setState({ gallery });
+    if(fromFavGallery){
+      favorites = favorites.filter((url) => url !== imgUrl);
+    }
+    this.setState({ gallery, favorites });
   };
 
   render() {

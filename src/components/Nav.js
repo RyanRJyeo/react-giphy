@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../context";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Nav() {
+  const context = useContext(DataContext);
+  const { favorites } = context;
   const { pathname } = useLocation();
+
+  let favNum;
+  if (favorites.length > 0) {
+    favNum = `(${favorites.length})`;
+  }
 
   let active = "active";
   let notActive = "not-active";
@@ -22,7 +30,7 @@ export default function Nav() {
         className={`navlinks ${pathname === "/favorites" ? active : notActive}`}
         to="/favorites"
       >
-        Favorites
+        Favorites{favNum}
       </Link>
     </nav>
   );

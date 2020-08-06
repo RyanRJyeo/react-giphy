@@ -9,14 +9,14 @@ export default function Gallery() {
   if (gallery.length > 0) {
     img = gallery.map((image, index) => {
       let heart = (
-        <div className="heartbox" onClick={() => toggleFav(index)}>
+        <div className="heartbox" onClick={() => toggleFav(image.url)}>
           <i className="bx bxs-heart bx-md"></i>
         </div>
       );
 
       if (image.favorite) {
         heart = (
-          <div className="heartboxfav" onClick={() => toggleFav(index)}>
+          <div className="heartboxfav" onClick={() => toggleFav(image.url)}>
             <i className="bx bxs-heart bx-md"></i>
           </div>
         );

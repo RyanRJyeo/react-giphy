@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import FavGallery from "../components/FavGallery";
 
 export default function Favorites() {
   return (
     <div>
-      <h1>hello from Favorites page</h1>
+      <FavGallery />
     </div>
-  )
+  );
 }
