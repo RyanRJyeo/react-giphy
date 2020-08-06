@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+:root {
+  --lightgrey: rgb(199, 199, 199);
+  --midgrey: rgb(141, 141, 141);
+  --darkgrey: rgb(80, 80, 80);
+  --mainfont: "Open Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  line-height: 1.4;
+  font-family: var(--mainfont);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.darkgrey {
+  color: var(--darkgrey);
 }
 
-.App-link {
-  color: #61dafb;
+/* Nav */
+.nav {
+  border-bottom: 1px solid var(--lightgrey);
+  padding: 10px 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav a {
+  text-decoration: none;
+}
+
+.navlogo {
+  border-right: 1px solid var(--lightgrey);
+  color: var(--midgrey);
+  font-size: 1.5em;
+  padding: 0 20px;
+}
+
+.navlinks {
+  font-size: 1.5em;
+  padding-left: 20px;
+}
+
+.active {
+  color: var(--darkgrey);
+}
+
+.not-active {
+  color: var(--lightgrey);
+}
+
+/* Search Bar */
+.searchbar-holder {
+  margin: 5% auto;
+  width: 70%;
+}
+
+.searchbar {
+  border: none;
+  border-bottom: 1px solid var(--lightgrey);
+  color: var(--darkgrey);
+  font-size: 2em;
+  width: 100%;
+}
+
+.searchbar:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: var(--lightgrey);
+  font-family: var(--mainfont);
 }
