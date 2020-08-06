@@ -75,7 +75,6 @@ body {
 }
 
 /* Gallery */
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -92,6 +91,32 @@ body {
   height: 150px;
   margin: 1%;
   width: 23%;
+}
+
+.heartbox {
+  color: rgba(255, 0, 55, 0);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  transition: ease-in-out 0.3s;
+}
+
+.heartbox:hover {
+  color: rgba(255, 0, 55, 0.514);
+}
+
+.heartboxfav{
+  color: rgba(255, 0, 55, 0.856);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  transition: ease-in-out 0.3s;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -116,4 +141,75 @@ body {
     margin: 2% auto;
     width: 95%;
   }
+}
+
+/* Loading - Source code from https://codepen.io/ahmadbassamemran/pen/zQKqba */
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: var(--darkgrey);
+  border-radius: 50%;
+  animation: loading 1.5s cubic-bezier(0.8, 0.5, 0.2, 1.4) infinite;
+  transform-origin: bottom center;
+  position: relative;
+}
+@keyframes loading {
+  0% {
+    transform: translateY(0px);
+    background-color: var(--lightgrey);
+  }
+  50% {
+    transform: translateY(50px);
+    background-color: var(--midgrey);
+  }
+  100% {
+    transform: translateY(0px);
+    background-color: var(--darkgrey);
+  }
+}
+.circle-1 {
+  animation-delay: 0.1s;
+}
+.circle-2 {
+  animation-delay: 0.2s;
+}
+.circle-3 {
+  animation-delay: 0.3s;
+}
+.circle-4 {
+  animation-delay: 0.4s;
+}
+.circle-5 {
+  animation-delay: 0.5s;
+}
+.circle-6 {
+  animation-delay: 0.6s;
+}
+.circle-7 {
+  animation-delay: 0.7s;
+}
+.circle-8 {
+  animation-delay: 0.8s;
+}
+
+.linkholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.linkholder a {
+  color: #6155f6;
 }

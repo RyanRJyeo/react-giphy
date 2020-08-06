@@ -21,9 +21,8 @@ class DataProvider extends Component {
         `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8`
       )
       .then((res) => {
-        console.log(res);
         const gallery = this.formatData(res.data.data);
-        this.setState({ gallery });
+        this.setState({ gallery, loading: false });
       });
   };
 
@@ -31,14 +30,21 @@ class DataProvider extends Component {
     let gallery = [];
     for (let i = 0; i < dataArray.length; i++) {
       const { url } = dataArray[i].images.original;
-      gallery.push(url);
+      const favorite = false;
+      gallery.push({ url, favorite });
     }
 
     return gallery;
   };
 
-  doneLoading = () => {
-    this.setState({ loading: false });
+  toggleFav = (galleryIndex) => {
+    const gallery = this.state.gallery.map((eachImage, eachIndex) => {
+      if (eachIndex === galleryIndex) {
+        eachImage.favorite = !eachImage.favorite;
+      }
+      return eachImage;
+    });
+    this.setState({ gallery });
   };
 
   render() {
@@ -48,7 +54,7 @@ class DataProvider extends Component {
           ...this.state,
           startLoading: this.startLoading,
           getGallery: this.getGallery,
-          doneLoading: this.doneLoading,
+          toggleFav: this.toggleFav,
         }}
       >
         {this.props.children}
