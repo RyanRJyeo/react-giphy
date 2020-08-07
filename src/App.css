@@ -334,3 +334,29 @@ body {
     text-align: center;
   }
 }
+
+/* Fetch More */
+.fetch-holder {
+  margin: 30px auto 100px;
+  text-align: center;
+}
+
+.fetch {
+  background: white;;
+  border: 2px solid var(--darkgrey);
+  border-radius: 10px;
+  color: var(--darkgrey);
+  font-size: 2em;
+  font-family: var(--mainfont);
+  padding: 10px 30px;
+  transition: ease-in-out 0.3s;
+}
+
+.fetch:hover {
+  background: var(--darkgrey);
+  color: white;
+}
+
+.fetch:focus {
+  outline: none;
+}

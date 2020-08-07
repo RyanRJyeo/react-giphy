@@ -32,6 +32,24 @@ class DataProvider extends Component {
       });
   };
 
+  getMoreGallery = async () => {
+    const offset = this.state.gallery.length - 1;
+    let { query, gallery } = this.state;
+    axios
+      .get(
+        `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8&offset=${offset}`
+      )
+      .then((res) => {
+        const moreGallery = this.formatData(res.data.data);
+        gallery = gallery.concat(moreGallery)
+        this.setState({ gallery, loading: false });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ error: true, loading: false });
+      });
+  };
+
   formatData = (dataArray) => {
     let gallery = [];
     for (let i = 0; i < dataArray.length; i++) {
@@ -87,6 +105,7 @@ class DataProvider extends Component {
           toggleFav: this.toggleFav,
           noError: this.noError,
           setQuery: this.setQuery,
+          getMoreGallery: this.getMoreGallery,
         }}
       >
         {this.props.children}
