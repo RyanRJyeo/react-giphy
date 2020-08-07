@@ -5,22 +5,27 @@ import { DataContext } from "../context";
 import SearchBar from "../components/SearchBar";
 import Gallery from "../components/Gallery";
 import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 export default function Home() {
   const context = useContext(DataContext);
-  const { loading } = context;
+  const { loading, error } = context;
 
-  let body;
+  let body = <Gallery />;
   if (loading) {
     body = <Loading />;
-  } else {
-    body = <Gallery />;
+  }
+
+  let err;
+  if(error){
+    err = <Error />
   }
 
   return (
     <div>
       <SearchBar />
       {body}
+      {err}
     </div>
   );
 }

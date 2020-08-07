@@ -8,6 +8,8 @@ class DataProvider extends Component {
     loading: false,
     gallery: [],
     favorites: [],
+    error: false,
+    query: "",
   };
 
   startLoading = () => {
@@ -23,6 +25,10 @@ class DataProvider extends Component {
       .then((res) => {
         const gallery = this.formatData(res.data.data);
         this.setState({ gallery, loading: false });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ error: true, loading: false });
       });
   };
 
@@ -31,7 +37,10 @@ class DataProvider extends Component {
     for (let i = 0; i < dataArray.length; i++) {
       const { url } = dataArray[i].images.original;
       let favorite = false;
-      if (this.state.favorites.length > 0 && this.state.favorites.find((favUrl) => favUrl === url)) {
+      if (
+        this.state.favorites.length > 0 &&
+        this.state.favorites.find((favUrl) => favUrl === url)
+      ) {
         favorite = true;
       }
       gallery.push({ url, favorite });
@@ -54,10 +63,18 @@ class DataProvider extends Component {
       }
       return eachImage;
     });
-    if(fromFavGallery){
+    if (fromFavGallery) {
       favorites = favorites.filter((url) => url !== imgUrl);
     }
     this.setState({ gallery, favorites });
+  };
+
+  noError = () => {
+    this.setState({ error: false });
+  };
+
+  setQuery = (query) => {
+    this.setState({ query });
   };
 
   render() {
@@ -68,6 +85,8 @@ class DataProvider extends Component {
           startLoading: this.startLoading,
           getGallery: this.getGallery,
           toggleFav: this.toggleFav,
+          noError: this.noError,
+          setQuery: this.setQuery,
         }}
       >
         {this.props.children}

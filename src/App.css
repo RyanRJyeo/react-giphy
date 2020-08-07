@@ -213,3 +213,35 @@ body {
 .linkholder a {
   color: #6155f6;
 }
+
+/* Error */
+.errorholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.error {
+  border-right: 1px solid var(--lightgrey);
+  font-size: 6em;
+  padding: 0 30px;
+}
+
+.err-msg {
+  margin: 0 30px;
+}
+
+@media only screen and (max-width: 650px) {
+  .errorholder {
+    flex-direction: column;
+  }
+
+  .error {
+    border: none;
+  }
+
+  .err-msg {
+    text-align: center;
+  }
+}
