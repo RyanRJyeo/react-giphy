@@ -18,34 +18,34 @@ class DataProvider extends Component {
 
   getGallery = async (e) => {
     const query = e.replace(/ /g, "+");
-    axios
-      .get(
+    Promise.resolve(
+      axios.get(
         `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8`
       )
+    )
       .then((res) => {
         const gallery = this.formatData(res.data.data);
         this.setState({ gallery, loading: false });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ error: true, loading: false });
       });
   };
 
   getMoreGallery = async () => {
-    const offset = this.state.gallery.length - 1;
+    const offset = this.state.gallery.length;
     let { query, gallery } = this.state;
-    axios
-      .get(
+    Promise.resolve(
+      axios.get(
         `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8&offset=${offset}`
       )
+    )
       .then((res) => {
         const moreGallery = this.formatData(res.data.data);
-        gallery = gallery.concat(moreGallery)
+        gallery = gallery.concat(moreGallery);
         this.setState({ gallery, loading: false });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ error: true, loading: false });
       });
   };

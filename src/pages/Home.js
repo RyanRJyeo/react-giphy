@@ -16,10 +16,10 @@ export default function Home() {
   if (loading) body = <Loading />;
 
   let err;
-  if(error) err = <Error />
+  if (error) err = <Error />;
 
   let fetchMore;
-  if(gallery.length > 0 && !loading) fetchMore = <FetchMore />
+  if (gallery.length > 0 && !loading) fetchMore = <FetchMore />;
 
   return (
     <div>
