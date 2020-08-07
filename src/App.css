@@ -25,10 +25,19 @@ body {
 .nav {
   border-bottom: 1px solid var(--lightgrey);
   padding: 10px 20px;
+  height: 30px;
 }
 
 .nav a {
   text-decoration: none;
+}
+
+.nav-header {
+  display: inline;
+}
+
+.navbtn {
+  display: none;
 }
 
 .navlogo {
@@ -38,9 +47,22 @@ body {
   padding: 0 20px;
 }
 
+.navlinks-holder {
+  display: inline-flex;
+}
+
+.navlinks-holder li {
+  list-style: none;
+}
+
 .navlinks {
   font-size: 1.5em;
   padding-left: 20px;
+  transition: ease-in-out 0.3s;
+}
+
+.navlinks:hover {
+  color: var(--darkgrey);
 }
 
 .active {
@@ -49,6 +71,61 @@ body {
 
 .not-active {
   color: var(--lightgrey);
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navlogo {
+    border: none;
+  }
+
+  .navbtn {
+    display: block;
+    background: none;
+    border: none;
+    padding: 2px;
+  }
+
+  .navbtn:focus {
+    outline: none;
+  }
+
+  .menu {
+    vertical-align: bottom;
+  }
+
+  .navlinks-holder {
+    background: var(--midgrey);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 94%;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    right: 0%;
+  }
+
+  .navlinks-holder li {
+    border-bottom: 1px solid var(--lightgrey);
+    list-style: none;
+    padding: 20px;
+  }
+
+  .navlinks {
+    font-size: 3em;
+    padding: 0;
+  }
+
+  .hidelinks {
+    display: none;
+  }
 }
 
 /* Search Bar */
@@ -72,6 +149,18 @@ body {
 ::placeholder {
   color: var(--lightgrey);
   font-family: var(--mainfont);
+}
+
+@media only screen and (max-width: 600px) {
+  .searchbar {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .searchbar {
+    font-size: 1em;
+  }
 }
 
 /* Gallery */
@@ -108,7 +197,7 @@ body {
   color: rgba(255, 0, 55, 0.514);
 }
 
-.heartboxfav{
+.heartboxfav {
   color: rgba(255, 0, 55, 0.856);
   cursor: pointer;
   display: flex;
