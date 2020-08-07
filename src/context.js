@@ -20,7 +20,7 @@ class DataProvider extends Component {
     const query = e.replace(/ /g, "+");
     Promise.resolve(
       axios.get(
-        `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8`
+        `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8`
       )
     )
       .then((res) => {
@@ -37,7 +37,7 @@ class DataProvider extends Component {
     let { query, gallery } = this.state;
     Promise.resolve(
       axios.get(
-        `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8&offset=${offset}`
+        `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${process.env.REACT_APP_APIKEY}&limit=8&offset=${offset}`
       )
     )
       .then((res) => {
