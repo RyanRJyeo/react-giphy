@@ -8,6 +8,8 @@ Done with React.JS and GIPHY API
 
 ## Usage
 
+Create a .env file and add your GIPHY API key (reference from .env_sample)
+
 ```bash
 npm install
 ```
